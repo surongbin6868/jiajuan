@@ -138,16 +138,30 @@ function moveDrag(e){
 canvas.addEventListener('mousedown',function(e){
   e.preventDefault();
   const pos=getGridPos(e),dot=getDotAt(pos.col,pos.row);
-  if(dot)startDrag(dot);
-});
-canvas.addEventListener('mousemove',function(e){moveDrag(e)});
+  if(dot){
+    // 如果这个颜色已经有连线了，点击取消连线
+    if(paths.some(p=>p.color===dot.color)){
+      removePathByColor(dot.color);
+    }else{
+      startDrag(dot);
+    }
+  }
+});canvas.addEventListener('mousemove',function(e){moveDrag(e)});
 canvas.addEventListener('mouseup',function(){stopDrag()});
 canvas.addEventListener('mouseleave',function(){stopDrag()});
 
 canvas.addEventListener('touchstart',function(e){
   e.preventDefault();
   const pos=getGridPos(e),dot=getDotAt(pos.col,pos.row);
-  if(dot){startDrag(dot)}else{removePathByColorOfPos(pos)}
+  if(dot){
+    if(paths.some(p=>p.color===dot.color)){
+      removePathByColor(dot.color);
+    }else{
+      startDrag(dot);
+    }
+  }else{
+    removePathByColorOfPos(pos);
+  }
 },{passive:false});
 canvas.addEventListener('touchmove',function(e){moveDrag(e)},{passive:false});
 canvas.addEventListener('touchend',function(e){stopDrag()});

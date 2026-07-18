@@ -84,9 +84,17 @@
         .gallery-item .thumb{width:100%;aspect-ratio:3/4;border-radius:10px;background:#f5f0ea;overflow:hidden;margin-bottom:6px}
         .gallery-item .thumb img{width:100%;height:100%;object-fit:cover;display:block}
         .gallery-item .thumb .lock-icon{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:28px;color:#d5c8b8}
-        .gallery-item .gallery-card-name{color:#b0a090;font-size:11px;letter-spacing:0.5px;line-height:1.3}
+        .gallery-item .gallery-card-name{
+    	color:#b0a090;font-size:11px;letter-spacing:0.5px;line-height:1.3;
+    	min-height:28px; /* 固定两行高度 */
+   	 display:flex;align-items:center;justify-content:center;
+	}
         .gallery-item.collected .gallery-card-name{color:#3a2a22}
-        .gallery-item .gallery-badge{font-size:9px;padding:1px 10px;border-radius:10px;background:#ede0d0;color:#b0a090;display:inline-block;margin-top:2px}
+       .gallery-item .gallery-badge{
+    	font-size:9px;padding:1px 10px;border-radius:10px;background:#ede0d0;color:#b0a090;
+    	display:inline-block;margin-top:2px;
+   	 min-height:16px; /* 固定标签高度 */
+	}
         .gallery-item.collected .gallery-badge{background:#ede0d0;color:#8a7a6a}
         .gallery-item .gallery-badge.ur-badge{background:linear-gradient(135deg,#c88abc,#d4a84a);color:#fff}
         .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.40);backdrop-filter:blur(10px);z-index:1000;display:none;justify-content:center;align-items:center;padding:24px 20px}
@@ -250,9 +258,9 @@ const CARD_DATA=[{
     probability:0.192
 },{
     id:4,
-    name:'厂区大家庭',
+    name:'绢厂姑娘',
     isRare:false,
-    story:'下了夜班，大家在水池边洗把脸聊聊天，谁家有事全厂都知道。',
+    story:'车间姑娘们，一双手织满绢厂岁月',
     image:'https://pic1.imgdb.cn/item/6a47d3731f8fda9783dffeb3.jpg',
     probability:0.192
 },{
@@ -291,11 +299,13 @@ const FULL_STORIES=[
 
 一场场技能比拼、一页页手绘图纸，记录着绢纺人不等不靠、主动攻坚克难的处事态度，也是这座老厂能够稳步发展的重要支撑。`,
 
-`鼎盛时期的嘉兴绢纺厂，不只是生产车间，更是完整的职工生活社区。厂区配套托儿所、子弟学校、医务室、食堂、大礼堂、运动场地，覆盖职工衣食住行各类日常需求。
+`鼎盛时期的嘉兴绢纺厂，数千女工扎根织绸车间，白工作帽、格纹衬衣、素色围裙是一代人的标志性装束。
 
-大礼堂会定期放映影片、编排文艺节目，球场时常举办职工赛事；医务室可以处理常见小病，方便职工就近就诊。不少本地家庭几代人都在厂区工作，从小到大的生活轨迹都和绢纺厂紧密相连。
+她们日复一日守在织机旁，指尖翻飞理顺万千桑蚕丝线，精细丈量、平整坯绸，凭借日复一日的细致打磨，织出享誉海内外的红梅牌绢丝，产品远销三十余国，拿下国家级行业金奖。
 
-从幼年照料、读书求学，到日常就医、休闲活动，厂区尽力为职工提供便利，将为民奉献的内核融入一件件贴近群众的日常小事。`,
+三班倒的车间时光漫长枯燥，棉絮粉尘常年相伴，可一代代女工凭着踏实韧劲，精进操作技法，摸索高效织造流程，不少人成长为生产标兵、技术能手，以温柔双手扛起江南丝织产业半壁江山。
+
+同班组女工朝夕相伴，互帮互助切磋手艺，车间工作台前的并肩劳作，藏着独属于嘉绢女工的青春芳华，一根根绢丝串联起百年丝织工业的巾帼荣光。`,
 
 `1921年，两件意义深远的事发生在南湖畔：中共一大于南湖红船完成闭幕会议，孕育红船精神；同年裕嘉分厂落地投产，也就是嘉兴绢纺厂的前身，开启江南丝绸实业发展道路。
 
@@ -513,10 +523,10 @@ window.__jiaxuan_stats = function() {
     let clears = localStorage.getItem('jiaxuan_clears') || '0';
     let rares = localStorage.getItem('jiaxuan_rares') || '0';
     console.log('📊 嘉绢记忆后台数据');
-    console.log('👁️ 浏览量：' + visits);
-    console.log('🎮 通关数：' + clears);
-    console.log('⭐ 稀有卡：' + rares);
-    console.log('⏱ 平均时长：约1分12秒');
+    console.log('浏览量：' + visits);
+    console.log('通关数：' + clears);
+    console.log('稀有卡：' + rares);
+    console.log('平均时长：约1分12秒');
 };
 // 模拟多页访问，每3秒触发一次虚拟PV
 setTimeout(function(){ _hmt.push(['_trackPageview', '/page2']); }, 3000);
